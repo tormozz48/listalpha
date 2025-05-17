@@ -1,0 +1,48 @@
+{
+  "name": "listalpha",
+  "version": "1.0.0",
+  "description": "Test task for ListAlpha company (CRM for investors)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@tormozz48:tormozz48/listalpha.git"
+  },
+  "keywords": [
+    "investors",
+    "crm",
+    "listalpha",
+    "test",
+    "task",
+    "ai",
+    "chat-gpt",
+    "apollo",
+    "node",
+    "express"
+  ],
+  "author": "tormozz48@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.18",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
+  }
+}

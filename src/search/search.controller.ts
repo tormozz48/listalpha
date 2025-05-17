@@ -5,8 +5,9 @@ import {
   UseInterceptors,
   ClassSerializerInterceptor,
 } from '@nestjs/common';
-import { SearchBodyDto, SearchResponseDto } from './dto/search.dto';
+import { CompetitorDto, SearchBodyDto, SearchResponseDto } from './dto/search.dto';
 import { SearchService } from './search.service';
+import { ApolloOrganization } from 'src/apollo/apollo.dto';
 
 @Controller('search')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -15,6 +16,16 @@ export class SearchController {
 
   @Post()
   async search(@Body() searchBodyDto: SearchBodyDto): Promise<SearchResponseDto> {
-    return this.searchService.search(searchBodyDto.searchValue);
+    const competitors = await this.searchService.search(searchBodyDto.searchValue);
+
+    return {
+      competitors: competitors.map(this.toCompetitorDto),
+    };
+  }
+
+  private toCompetitorDto(competitor: ApolloOrganization): CompetitorDto {
+    const competitorDto = new CompetitorDto();
+    Object.assign(competitorDto, competitor);
+    return competitorDto;
   }
 }

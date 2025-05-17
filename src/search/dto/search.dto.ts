@@ -33,9 +33,7 @@ export class CompetitorDto {
   }
 
   readonly short_description: string;
-
   readonly logo_url: string;
-
   readonly website_url: string;
 }
 

@@ -1,0 +1,138 @@
+body {
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 28px;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.search-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+.search-box {
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  width: 400px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.main-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 200px auto 0;
+  display: flex;
+  min-height: calc(100vh - 140px);
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.content-panel {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.right-panel {
+  width: 300px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.entity-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.entity-item p {
+  margin: 0;
+  padding: 0;
+}
+
+.competitor-card {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.competitor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.competitor-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.competitor-info {
+  flex: 1;
+}
+
+.competitor-name {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.competitor-website {
+  font-size: 14px;
+  color: #3498db;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+
+.competitor-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}

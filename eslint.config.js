@@ -26,6 +26,6 @@ module.exports = tseslint.config(
         project: './tsconfig.eslint.json',
       },
     },
-    ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'build/**'],
-  }
+    ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'build/**', 'public/**'],
+  },
 );

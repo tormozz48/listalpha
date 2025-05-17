@@ -46,7 +46,7 @@ async function processString(searchValue) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
+    const { competitors: data } = await response.json();
 
     console.log('recieve data');
     console.log(data);

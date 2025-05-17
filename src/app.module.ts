@@ -1,9 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { ApolloModule } from './apollo/apollo.module';
+import { SearchModule } from './search/search.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ApolloModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    SearchModule,
+  ],
   controllers: [AppController],
   providers: [],
 })

@@ -9,11 +9,11 @@ export class ApolloService {
   constructor(private readonly configService: ConfigService) {}
 
   public async enrichOrganization(domain: string): Promise<ApolloOrganization> {
-    const apiCall = fetch(`${this.apiUrl}/organizations/enrich?domain=${domain}`, {
+    const apiCall = await fetch(`${this.apiUrl}/organizations/enrich?domain=${domain}`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
-    const response = (await apiCall).json() as unknown as ApolloEnrichOrganizationResponse;
+    const response = (await apiCall.json()) as unknown as ApolloEnrichOrganizationResponse;
     return response.organization;
   }
 

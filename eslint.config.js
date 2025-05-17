@@ -1,9 +1,9 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import prettierPlugin from 'eslint-plugin-prettier';
-import prettierConfig from 'eslint-config-prettier';
+const eslint = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+const prettierPlugin = require('eslint-plugin-prettier');
+const prettierConfig = require('eslint-config-prettier');
 
-export default tseslint.config(
+module.exports = tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   prettierConfig,
@@ -23,7 +23,7 @@ export default tseslint.config(
       sourceType: 'module',
       parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json',
+        project: './tsconfig.eslint.json',
       },
     },
     ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'build/**'],

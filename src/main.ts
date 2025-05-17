@@ -5,6 +5,10 @@ import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // Set global prefix for all routes
+  app.setGlobalPrefix('api');
+
   const port = process.env.PORT || 3001;
 
   // Serve static files from the 'public' directory

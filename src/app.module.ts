@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
+import { ApolloModule } from './apollo/apollo.module';
 
 @Module({
-  imports: [],
+  imports: [ApolloModule],
   controllers: [AppController],
   providers: [],
 })

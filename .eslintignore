@@ -1,4 +1,0 @@
-node_modules
-dist
-jest.config.js
-test/jest-e2e.config.js

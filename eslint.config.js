@@ -5,13 +5,36 @@ const tseslint = require('typescript-eslint');
 const prettierPlugin = require('eslint-plugin-prettier');
 const prettierConfig = require('eslint-config-prettier');
 
-module.exports = tseslint.config(
+// Define ignores first to prevent any processing of ignored files
+const ignores = [
+  '**/node_modules/**',
+  '**/dist/**',
+  '**/coverage/**',
+  '**/build/**',
+  '**/public/**',
+  'jest.config.js',
+  'test/jest-e2e.config.js',
+];
+
+// Get all TypeScript ESLint configs
+const tsConfigs = tseslint.configs.recommended;
+
+module.exports = [
+  // Ignore patterns should be applied first
+  { ignores },
+
+  // Base ESLint recommended config
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  prettierConfig,
+
+  // Apply all TypeScript ESLint configs
+  ...tsConfigs,
+
+  // Custom TypeScript configuration for .ts files only
   {
+    files: ['**/*.ts'],
     plugins: {
       prettier: prettierPlugin,
+      '@typescript-eslint': tseslint.plugin,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -28,6 +51,8 @@ module.exports = tseslint.config(
         project: './tsconfig.eslint.json',
       },
     },
-    ignores: ['node_modules/**', 'dist/**', 'coverage/**', 'build/**', 'public/**'],
   },
-);
+
+  // Apply prettier config
+  prettierConfig,
+];

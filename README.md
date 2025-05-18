@@ -61,21 +61,15 @@ Technical requirements:
 
 2. The API will be available at `http://localhost:3000`
 
-## Testing
-
-### Running Unit Tests
-
-```bash
-npm run test
-```
-
 ### Running End-to-End Tests
+
+Running e2e tests:
 
 ```bash
 npm run test:e2e
 ```
 
-### Running Linting
+Running linters:
 
 ```bash
 npm run lint

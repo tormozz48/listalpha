@@ -4,6 +4,7 @@ import {
   Post,
   UseInterceptors,
   ClassSerializerInterceptor,
+  HttpCode,
 } from '@nestjs/common';
 import { SearchBodyDto, SearchResponseDto } from './dto/search.dto';
 import { SearchService } from './search.service';
@@ -16,6 +17,7 @@ export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Post()
+  @HttpCode(200)
   @ApiOperation({
     summary: 'Find competitors',
     description: 'Find competitors based on domain name',

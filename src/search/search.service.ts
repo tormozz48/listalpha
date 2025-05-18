@@ -27,7 +27,6 @@ export class SearchService {
       }
 
       const enrichedCompetitors = await this.getEnrichedCompetitors(competitors);
-
       const competitorScoresMap = new Map<string, number>();
       competitors.forEach((competitor) => {
         competitorScoresMap.set(competitor.domain, competitor.score);
@@ -39,7 +38,6 @@ export class SearchService {
           score: competitorScoresMap.get(competitor.primaryDomain) ?? 0,
         }));
     } catch (e) {
-      console.log(e);
       this.logger.error(`Search competitors error: ${e.message}`);
       return [];
     }

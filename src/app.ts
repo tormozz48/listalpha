@@ -5,9 +5,9 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { join } from 'path';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-export async function createApp(): Promise<NestExpressApplication> {
+export async function createApplication(httpPort?: number): Promise<NestExpressApplication> {
   const logger = new Logger(AppModule.name);
-  logger.log('Creating app...');
+  logger.log('Creating application...');
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
@@ -39,7 +39,7 @@ export async function createApp(): Promise<NestExpressApplication> {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  const port = process.env.PORT || 3001;
+  const port = httpPort || process.env.PORT || 3001;
   await app.listen(port);
   logger.log(`Application is running on: http://localhost:${port}`);
 
@@ -47,5 +47,5 @@ export async function createApp(): Promise<NestExpressApplication> {
 }
 
 if (require.main === module) {
-  createApp();
+  createApplication();
 }

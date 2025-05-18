@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const eslint = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const prettierPlugin = require('eslint-plugin-prettier');

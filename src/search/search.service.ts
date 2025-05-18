@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ApolloService } from '../providers/apollo.service';
 import { CompetitorDto } from './dto/search.dto';
 import { AiService } from '../providers/ai.service';
+import { Organization } from 'src/providers/types';
 
 @Injectable()
 export class SearchService {
@@ -23,10 +24,17 @@ export class SearchService {
       const competitorDomains = competitors.map((competitor) => competitor.domain);
       const enrichedCompetitors =
         await this.apolloService.bulkEnrichOrganizations(competitorDomains);
-      return enrichedCompetitors;
+
+      return enrichedCompetitors.filter(this.isNotSourceOrganization(organization));
     } catch (e) {
       this.logger.error(`Search competitors error: ${e.message}`);
       return [];
     }
+  }
+
+  private isNotSourceOrganization(
+    organization: Organization,
+  ): (competitor: Organization) => boolean {
+    return (competitor: Organization) => organization.primaryDomain !== competitor.primaryDomain;
   }
 }

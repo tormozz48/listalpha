@@ -27,6 +27,7 @@ export class AiService {
       schema: CompetitorSchema,
       messages: this.getMessages(organization),
     });
+
     return result.object.map((competitor) => ({
       domain: competitor.domain,
       score: competitor.score,
@@ -56,7 +57,8 @@ export class AiService {
         content: `
           You are an experienced investor adviser AI. 
           Your task is to analyze an organization and find the most relevant competitors based on its business data. 
-          Use industry, keywords, description, and location to determine relevance. 
+          Use industry, keywords, description, and location to determine relevance.
+          Competitors should be unique and do not contain source organization.
           For each competitor, return its primary domain and a similarity score from 0 to 1 (1 meaning an exact match). 
           Focus primarily on business domain similarity; location is a secondary factor.
         `,

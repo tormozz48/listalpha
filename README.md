@@ -2,6 +2,8 @@
 
 Test task for position in ListAlpha company
 
+Available at: [https://listalpha.onrender.com](https://listalpha.onrender.com)
+
 ## Task description
 
 The goal is to be able to find out 5 competitors for a given business based on its size, industry, geographic position and nature of operations. For example if an investor is looking at an American shoe company (e.g., Nike), the competitive list should include other American or global shoe companies (Addidas, Puma, etc.).

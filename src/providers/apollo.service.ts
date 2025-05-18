@@ -33,12 +33,15 @@ export class ApolloService {
 
   constructor(private readonly configService: ConfigService) {}
 
-  public async enrichOrganization(domain: string): Promise<Organization> {
+  public async enrichOrganization(domain: string): Promise<Organization | null> {
     const apiCall = await fetch(`${this.apiUrl}/organizations/enrich?domain=${domain}`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
     const response = (await apiCall.json()) as unknown as ApolloAPIEnrichOrganizationResponse;
+    if (!response.organization) {
+      return null;
+    }
     this.logger.log(`Organization enriched: name = ${response.organization.name}`);
     return this.convertToOrganizationModel(response.organization);
   }

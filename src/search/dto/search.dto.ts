@@ -55,6 +55,12 @@ export class CompetitorDto {
     example: 'https://example.com',
   })
   readonly website: string;
+
+  @ApiProperty({
+    description: 'Similarity score of the competitor',
+    example: 0.8,
+  })
+  readonly score: number;
 }
 
 export class SearchResponseDto {

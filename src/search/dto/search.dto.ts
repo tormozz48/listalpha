@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
-import { Exclude, Expose, Transform, Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 
 export class SearchBodyDto {
   @IsNotEmpty({ message: 'Search value is required' })
@@ -9,32 +9,12 @@ export class SearchBodyDto {
   searchValue: string;
 }
 
-@Exclude()
 export class CompetitorDto {
-  @Expose()
   readonly id: string;
-
-  @Expose()
   readonly name: string;
-
-  @Expose()
-  get description() {
-    return this.short_description;
-  }
-
-  @Expose()
-  get logo() {
-    return this.logo_url;
-  }
-
-  @Expose()
-  get website() {
-    return this.website_url;
-  }
-
-  readonly short_description: string;
-  readonly logo_url: string;
-  readonly website_url: string;
+  readonly description: string;
+  readonly logo: string;
+  readonly website: string;
 }
 
 export class SearchResponseDto {

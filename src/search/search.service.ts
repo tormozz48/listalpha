@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { ApolloService } from '../apollo/apollo.service';
-import { ApolloOrganization } from 'src/apollo/apollo.dto';
+import { CompetitorDto } from './dto/search.dto';
 
 @Injectable()
 export class SearchService {
   constructor(private readonly apolloService: ApolloService) {}
 
-  async search(searchValue: string): Promise<ApolloOrganization[]> {
+  async search(searchValue: string): Promise<CompetitorDto[]> {
     try {
       const organization = await this.apolloService.enrichOrganization(searchValue);
       return [organization];

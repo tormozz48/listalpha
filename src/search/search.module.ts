@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { SearchController } from './search.controller';
 import { SearchService } from './search.service';
-import { ApolloModule } from '../apollo/apollo.module';
+import { ProvidersModule } from '../providers/providers.module';
 
 @Module({
-  imports: [ApolloModule],
+  imports: [ProvidersModule],
   controllers: [SearchController],
   providers: [SearchService],
   exports: [],

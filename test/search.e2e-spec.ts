@@ -76,13 +76,28 @@ describe('SearchController (e2e)', () => {
         .send({ searchValue: 'testcompany.com' })
         .expect(200);
 
-      expect(response.body).toHaveProperty('competitors');
-      expect(response.body.competitors).toHaveLength(2);
-      expect(response.body.competitors[0]).toHaveProperty('id', 'comp-1');
-      expect(response.body.competitors[0]).toHaveProperty('name', 'Competitor One');
-      expect(response.body.competitors[0]).toHaveProperty('score');
-      expect(response.body.competitors[1]).toHaveProperty('id', 'comp-2');
-      expect(response.body.competitors[1]).toHaveProperty('name', 'Competitor Two');
+      expect(response.body).toEqual({
+        competitors: [
+          {
+            id: 'comp-1',
+            name: 'Competitor One',
+            score: 0.9,
+            logo: 'https://competitor1.com/logo.png',
+            website: 'https://competitor1.com',
+            description: 'Description of competitor one',
+            primaryDomain: 'competitor1.com',
+          },
+          {
+            id: 'comp-2',
+            name: 'Competitor Two',
+            score: 0.8,
+            logo: 'https://competitor2.com/logo.png',
+            website: 'https://competitor2.com',
+            description: 'Description of competitor two',
+            primaryDomain: 'competitor2.com',
+          },
+        ],
+      });
     });
 
     it('should return 400 for invalid domain format', async () => {

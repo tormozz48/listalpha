@@ -13,7 +13,20 @@ export async function createApplication(httpPort?: number): Promise<NestExpressA
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          imgSrc: ["'self'", 'data:', 'blob:', 'https:', 'http:'],
+          styleSrc: ["'self'", "'unsafe-inline'", 'https:'],
+          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+          connectSrc: ["'self'", 'https:', 'http:'],
+          fontSrc: ["'self'", 'https:', 'data:'],
+        },
+      },
+    }),
+  );
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

@@ -55,13 +55,48 @@ Technical requirements:
 
 ### Running the Application
 
+#### Local Development
+
 1. Start the development server
 
    ```bash
    npm run start:dev
    ```
 
-2. The API will be available at `http://localhost:3000`
+2. The API will be available at `http://localhost:3001`
+
+#### Using Docker Compose
+
+1. Make sure you have Docker and Docker Compose installed on your system
+
+2. Build and start the containerized application
+
+   ```bash
+   docker-compose up -d
+   ```
+
+3. The API will be available at `http://localhost:3001`
+
+4. View application logs
+
+   ```bash
+   docker-compose logs -f
+   ```
+
+5. Stop the application
+
+   ```bash
+   docker-compose down
+   ```
+
+6. Rebuild the container after making changes
+
+   ```bash
+   docker-compose build
+   docker-compose up -d
+   ```
+
+> **Note:** The Docker setup uses the `NODE_ENV=development` environment by default, which disables Helmet security headers for easier local development. For production deployment, change this to `NODE_ENV=production` in the docker-compose.yml file.
 
 ### Running End-to-End Tests
 
